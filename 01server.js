@@ -3,9 +3,9 @@ const express = require("express");
 const mongoose = require("./db"); // Connects to MongoDB
 const Person = require("./models/Person");
 const Menu = require("./models/Menu"); // ✅ fixed typo
-
+require("dotenv").config();
 const app = express();
-
+const PORT = process.env.PORT || 3000; 
 // Middleware
 app.use(express.json());
 
@@ -92,6 +92,7 @@ app.use('/person', personRoutes)
 
 const menuRoutes = require('./routes/menuRoutes')
 app.use('/menu', menuRoutes)
+
 
 
 // Start server only after MongoDB connection
